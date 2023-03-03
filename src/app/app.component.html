@@ -1,0 +1,30 @@
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="getData()">
+  <label class="form-check-label" for="flexCheckDefault">
+    Virtual Project
+  </label>
+</div>
+
+
+<div class="dropdown menu" >
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Programs
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <label class="dropdown-item" *ngFor="let item of programList">
+      <input type="checkbox" #programName   (click)="getProject(item.programId)"> {{item.programName}}
+    </label>
+  </div>
+</div>
+
+<div class="dropdown menu">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Projects
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <label class="dropdown-item" *ngFor="let item of final">
+      <input type="checkbox" > {{item.projectName}}
+    </label>
+  </div>
+</div>

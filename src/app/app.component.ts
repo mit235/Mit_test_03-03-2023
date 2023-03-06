@@ -17,22 +17,16 @@ export class AppComponent {
     });
   }
 
-  items: any;
   projectList: project[] = [];
   programList: program[] = [];
   resultArray: project[] = [];
-  selectPrograms: any = [];
-  final: project[]= [];
-  Newfinal:any[]=[];
-  
+  selectPrograms: string[] = [];
+  final: project[] = [];
 
-  onCheckboxChange(item: any, event: any) {
-    item.selected = event.target.checked;
-  }
   getData() {
     this.service.getAllActiveVirtualPrograms().subscribe((res) => {
       this.programList = res;
-      console.warn('mit', this.programList);
+      console.warn(this.programList);
     });
   }
 
@@ -40,20 +34,17 @@ export class AppComponent {
     console.warn('programID', data);
     this.selectPrograms.push(data);
 
-    // this.resultArray=this.projectList.filter((item)=>item.programID==this.selectPrograms.programID)
-    //  console.warn('id array',this.selectPrograms)
-  console.warn("all Selected Id",this.selectPrograms)
+    console.warn('all Selected Id', this.selectPrograms);
     this.projectList.forEach((data) => {
       this.selectPrograms.forEach((res: any) => {
-        if (data.programID == res && this.final.findIndex(ap => ap.projectName == data.projectName)==-1) {
+        if (
+          data.programID == res &&
+          this.final.findIndex((ap) => ap.projectName == data.projectName) == -1
+        ) {
           this.final.push(data);
         }
       });
     });
     // this.final = Array.from(new Set(this.final));
-   
-  //  this.Newfinal = this.final.filter((value, index, self) => self.indexOf(value) === index);
-
-
   }
 }
